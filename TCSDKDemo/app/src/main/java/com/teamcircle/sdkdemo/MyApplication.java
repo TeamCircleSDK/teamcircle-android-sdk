@@ -101,7 +101,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
-        TeamCircleSDK.getInstance().init(this, "ty9muwb1", "7c44217bea2c46beaeb87aa0b01a0fbc");
+        TeamCircleSDK.getInstance().init(this, "cojksawr", "d6526542a1c247c399aa41e66122118f");
         TeamCircleSDK.getInstance().registerTeamCircleListener(teamCircleListener);
         ApiHelper.setup();
     }
