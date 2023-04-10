@@ -121,6 +121,7 @@ org.greenrobot:eventbus
 com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer
 org.jsoup:jsoup
 io.hyphenate:hyphenate-chat
+com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26
 ```
 If your project does not have the above dependent package files, you can also install the dependent packages in the following ways:
 ```bash
@@ -155,6 +156,8 @@ implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.1.6-jitpack'
 implementation 'org.jsoup:jsoup:1.14.2'
 
 implementation 'io.hyphenate:hyphenate-chat:3.9.5'
+
+implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26'
 ```
 
 ## TeamCircleListener callbacks
