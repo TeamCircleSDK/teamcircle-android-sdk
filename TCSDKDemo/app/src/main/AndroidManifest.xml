@@ -72,7 +72,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".NewPostActivity"
+            android:name=".NewPostModuleActivity"
             android:screenOrientation="portrait" />
     </application>
 

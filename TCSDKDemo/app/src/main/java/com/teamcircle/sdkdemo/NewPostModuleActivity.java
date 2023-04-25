@@ -9,7 +9,7 @@ import com.xkglow.xkchrome.sdk.TeamCircleSDK;
 import com.xkglow.xkchrome.sdk.listener.NewPostCallback;
 import com.xkglow.xkchrome.sdk.model.bean.NewPostDetail;
 
-public class NewPostActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewPostModuleActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     @Override
@@ -17,7 +17,7 @@ public class NewPostActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         getWindow().setStatusBarColor(getResources().getColor(R.color.white));
-        setContentView(R.layout.activity_new_post);
+        setContentView(R.layout.activity_new_post_module);
         findViewById(R.id.ivBack).setOnClickListener(this);
         findViewById(R.id.tvNewPost).setOnClickListener(this);
         findViewById(R.id.ivNewPost).setOnClickListener(this);

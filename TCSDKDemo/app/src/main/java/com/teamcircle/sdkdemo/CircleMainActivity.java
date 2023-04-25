@@ -42,7 +42,7 @@ public class CircleMainActivity extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(this, SearchModuleActivity.class));
                 break;
             case R.id.rlNewPost:
-                startActivity(new Intent(this, NewPostActivity.class));
+                startActivity(new Intent(this, NewPostModuleActivity.class));
                 break;
         }
     }
