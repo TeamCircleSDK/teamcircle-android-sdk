@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.amazonaws.util.StringUtils;
 import com.xkglow.xkchrome.sdk.TeamCircleSDK;
 import com.xkglow.xkchrome.sdk.api.enity.TeamCircleGeneralThrowable;
@@ -11,6 +13,7 @@ import com.xkglow.xkchrome.sdk.api.enity.TeamCircleThrowable;
 import com.xkglow.xkchrome.sdk.listener.ProfileAccountListener;
 import com.xkglow.xkchrome.sdk.listener.TeamCircleListener;
 import com.xkglow.xkchrome.sdk.model.bean.ShareJson;
+import com.xkglow.xkchrome.sdk.model.enumeration.TeamCircleTheme;
 import com.xkglow.xkchrome.sdk.xlog.XLog;
 
 import org.json.JSONException;
@@ -43,36 +46,8 @@ public class MyApplication extends Application {
         }
 
         @Override
-        public void onEditProfile(String accountName, String avatarUrl, String bio, ProfileAccountListener profileAccountListener) {
-            try {
-                JSONObject object = new JSONObject();
-                object.put("username", accountName == null ? SpUtil.getInstance().getString(SpUtil.USERNAME, "") : accountName);
-                if (avatarUrl != null) {
-                    object.put("avatar", avatarUrl);
-                }
-                object.put("bio", bio == null ? SpUtil.getInstance().getString(SpUtil.BIO, "") : bio);
-                ApiHelper.post("demo/v1/user/users/" + SpUtil.getInstance().getInt(SpUtil.USERID, 0), object.toString(), new ApiHelper.ApiCallback() {
-                    @Override
-                    public void onSuccess(JSONObject response) {
-                        boolean resultStatus = response.optBoolean("resultStatus");
-                        SpUtil.getInstance().save(SpUtil.USERNAME, accountName);
-                        if (resultStatus) {
-                            if (profileAccountListener != null)
-                                profileAccountListener.onSuccess();
-                        }
-                    }
+        public void onEditProfile(@Nullable String accountName, @Nullable String avatarUrl, @Nullable String bio) {
 
-                    @Override
-                    public void onFail(String errorMsg) {
-                        if (profileAccountListener != null) {
-                            profileAccountListener.onError(new TeamCircleGeneralThrowable(new Throwable(errorMsg)));
-                        }
-                        Log.d("onFail", "" + "errorMsg" + errorMsg);
-                    }
-                });
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
         }
 
         @Override
@@ -103,6 +78,7 @@ public class MyApplication extends Application {
         mContext = this;
         TeamCircleSDK.getInstance().init(this, "cojksawr", "d6526542a1c247c399aa41e66122118f");
         TeamCircleSDK.getInstance().registerTeamCircleListener(teamCircleListener);
+        TeamCircleSDK.getInstance().init(this, "cojksawr", "d6526542a1c247c399aa41e66122118f");
         ApiHelper.setup();
     }
 
