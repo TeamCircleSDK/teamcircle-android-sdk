@@ -176,6 +176,8 @@ TeamCircleSDK.getInstance().registerTeamCircleListener(new TeamCircleListener() 
   public void onShareJsonDownloaded(String shareJsonContent) {}
   @Override
   public void onDeleteAccount() {}
+  @Override
+  public void teamCircleTapProduct(String productCode) {}
 });
 ```
 Error Codes:
@@ -241,6 +243,32 @@ public void userLogout();
 TeamCircleSDK.getInstance().userLogout();
 ```
 
+**Method:** deleteAccount
+
+**Description:** Description: Use this method to clear all personal data of the user in the server.
+
+**Parameters:**
+
+```bash
+public void deleteAccount(OperatorResultCallback callback);
+```
+**Sample Code:**
+
+```bash
+TeamCircleSDK.getInstance().deleteAccount(new OperatorResultCallback() 
+{
+    @Override
+    public void onSuccess() {
+        
+    }
+
+    @Override
+    public void onFail(String error) {
+
+    }
+});
+```
+
 ## Actions and notifications
 There are several types of actions including like, comment, reply, favorite, followed by other users, and posts get featured by admin. All these actions can be sent to customers as push notifications, and you only need to set ‘Push Notification Callback’ in the Admin Dashboard → SDK&DOC → APP Info. After receiving push notifications in the app, the following methods can be used to redirect to Circle Notification Module:
 
@@ -249,12 +277,12 @@ There are several types of actions including like, comment, reply, favorite, fol
 **Parameters:**
 
 ```bash
-public void jumpToNotificationCenter(Context context, String message);
+public void jumpToNotificationCenter();
 ```
 **Sample Code:**
 
 ```bash
-TeamCircleSDK.getInstance().jumpToNotificationCenter(context, "xxx started following you.");
+TeamCircleSDK.getInstance().jumpToNotificationCenter();
 ```
 There are two types of messages received by the server, Circle messages and IM offline messages. The specific parameters are as follows:
 | **Param** | **Type** | **Description** |
@@ -409,7 +437,7 @@ TeamCircleSDK.getInstance().sendPost(newPostDetail, new SendPostCallBack() {
 });
 ```
 
-## Share Json
+## Post Attachment
 Sometimes an app might have its own unique content that it wishes users can share along with the post. These contents are usually related with the core function of the app. Here are a few examples
 
 * An IoT cookware app can enable users to share their recipe program while posting gourmet photos.
@@ -587,18 +615,76 @@ TeamCircleSDK.getInstance().getUiSetting().setProductDescColor(typeface,context.
 * **Method:** setIconBack <br> **Description:** Set icon for all back buttons.
 <img src="https://user-images.githubusercontent.com/114135053/193207889-fac83ce6-6499-4fd9-adf4-1b4e8c5fc1b4.png" width="40%">
 
+* **Method:** setIconEnableSendComment <br> **Description:** Set icon for enable to sending a comments.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/77a48f4a-2846-4c33-ad3f-28eeb888d352" width="40%">
+
+* **Method:** setIconDisableSendComment <br> **Description:** Set icon for disable to sending a comments.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/69c92f06-f607-4591-8334-16af2991797d" width="40%">
+
+* **Method:** setIconEnableSendGif <br> **Description:** Set icon for enable to sending a GIF.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/0963274c-6fb0-4f62-b2a7-24a69435aeb3" width="40%">
+
+* **Method:** setIconDisableSendGif <br> **Description:** Set icon for disable to sending a GIF.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/74aa020d-ff4b-4da0-9130-7c0d2d1313e1" width="40%">
+
+* **Method:** setIconEnableSendPhoto <br> **Description:** Set icon for enable to sending photos.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/b2df3983-969d-4c6a-83c4-1493103f2abf" width="40%">
+
+* **Method:** setIconDisableSendPhoto <br> **Description:** Set icon for disable to sending photos.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/2b0cd44f-1609-4f18-9060-7e7e8505b7fb" width="40%">
+
+* **Method:** setIconMoreOperation <br> **Description:** Set the more operation icon in the upper right corner of the post.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/207fddbc-3d3f-4bd7-ba1c-419b257348a4" width="40%">
+
+* **Method:** setIconStore <br> **Description:** Set the icon of the store entrance.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/9120307a-9f89-43d9-ade4-1d8352cf0216" width="40%">
+
+* **Method:** setIconProfile <br> **Description:** Set the icon of profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/2f373b16-7786-4a50-b0c0-94b35226a6ce" width="40%">
+
+* **Method:** setIconChat <br> **Description:** Set the icon of chat.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/9935826d-993b-4044-ab1f-161c047da353" width="40%">
+
+* **Method:** setIconProfileMyPost <br> **Description:** Set the icon of my post in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/09911c2c-4296-4d38-a4ee-5c63f0f349a0" width="40%">
+
+* **Method:** setIconProfileMyPostSelected <br> **Description:** Set the icon of my post seleted in Profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/858d7621-357b-486a-b16b-d3d24892bdc6" width="40%">
+
+* **Method:** setIconProfileFavorite <br> **Description:** Set the icon of my favorite in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/8ec2a9d7-ff07-4056-87a1-43b461662aa4" width="40%">
+
+* **Method:** setIconProfileFavoriteSelected <br> **Description:** Set the icon of my favorite seleted in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/ef0b2a6d-38cb-45ba-8bc7-8b892ce518db" width="40%">
+
+
+
 Sample Code:
 ```bash
-TeamCircleSDK.getInstance().getUiSetting().setIconFavorite(R.drawable.favorite);
-TeamCircleSDK.getInstance().getUiSetting().setIconFavoriteSelected(R.drawable.favorite_selected);
-TeamCircleSDK.getInstance().getUiSetting().setIconTag(R.drawable.tag);
-TeamCircleSDK.getInstance().getUiSetting().setIconTagSelected(R.drawable.tag_select);
+TeamCircleSDK.getInstance().getUiSetting().setIconBack(R.drawable.back);
 TeamCircleSDK.getInstance().getUiSetting().setIconLike(R.drawable.like);
 TeamCircleSDK.getInstance().getUiSetting().setIconLikeSelected(R.drawable.like_selected);
-TeamCircleSDK.getInstance().getUiSetting().setIconShare(R.drawable.share);
+TeamCircleSDK.getInstance().getUiSetting().setIconFavorite(R.drawable.favorite);
+TeamCircleSDK.getInstance().getUiSetting().setIconFavoriteSelected(R.drawable.favorite_selected);
 TeamCircleSDK.getInstance().getUiSetting().setIconComment(R.drawable.comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconShare(R.drawable.share);
 TeamCircleSDK.getInstance().getUiSetting().setIconNewPost(R.drawable.newpost);
-TeamCircleSDK.getInstance().getUiSetting().setIconBack(R.drawable.back);
+TeamCircleSDK.getInstance().getUiSetting().setIconTag(R.drawable.tag);
+TeamCircleSDK.getInstance().getUiSetting().setIconTagSelected(R.drawable.tag_select);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendComment(R.drawable.enable_send_comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendComment(R.drawable.disable_send_comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendGif(R.drawable.enable_send_gif);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendGif(R.drawable.disable_send_gif);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendPhoto(R.drawable.enable_send_photo);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendPhoto(R.drawable.disable_send_photo);
+TeamCircleSDK.getInstance().getUiSetting().setIconMoreOperation(R.drawable.more_operation);
+TeamCircleSDK.getInstance().getUiSetting().setIconStore(R.drawable.store);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfile(R.drawable.profile);
+TeamCircleSDK.getInstance().getUiSetting().setIconChat(R.drawable.chat);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileMyPost(R.drawable.profile_my_post);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileMyPostSelected(R.drawable.profile_my_post_selected);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileFavorite(R.drawable.profile_favorite);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileFavoriteSelected(R.drawable.profile_favorite_selected);
 ```
 ## Colors
 
