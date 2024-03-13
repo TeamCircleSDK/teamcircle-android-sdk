@@ -474,7 +474,13 @@ TeamCircleSDK.getInstance().getShareJsonSetting().setShareJsonActivity("com.xxxx
 **Sample Code:**
 
 ```bash
-TeamCircleSDK.getInstance().getShareJsonSetting().setShareJsonActivity("com.xxxx.xxxx.xxxxActivity", "android.intent.category.DEFAULT");
+ShareJson shareJson = new ShareJson();
+shareJson.setAppId("com.xxxx.xxxx");
+shareJson.setAppLogo(R.drawable.icon);
+shareJson.setName(wavePatternHolder.name);
+shareJson.setContent(wavePatternHolder.toJson());
+shareJson.setThumbnail(thumbnailSavePathMap.get(selectedIndex));
+TeamCircleSDK.getInstance().getShareJsonSetting().setShareJson(shareJson);
 ```
 
 **Method:** setShareJsonIcons
