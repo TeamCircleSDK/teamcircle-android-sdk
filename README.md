@@ -467,6 +467,16 @@ By default, the json file contains the following keys:
 TeamCircleSDK.getInstance().getShareJsonSetting().setShareJsonActivity("com.xxxx.xxxx.xxxxActivity", "android.intent.category.DEFAULT");
 ```
 
+**Method:** setShareJson
+
+**Description:** Set share json. If you select a Json in the ShareJsonActivity page, you need to call it when you return to the page.
+
+**Sample Code:**
+
+```bash
+TeamCircleSDK.getInstance().getShareJsonSetting().setShareJsonActivity("com.xxxx.xxxx.xxxxActivity", "android.intent.category.DEFAULT");
+```
+
 **Method:** setShareJsonIcons
 
 **Description:** Set upload and download icons.
