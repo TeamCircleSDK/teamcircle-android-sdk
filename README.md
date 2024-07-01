@@ -1,11 +1,11 @@
-# [TeamCircle](https://teamcircle.io) SDK for Android
+# [TeamCircle](https://teamcircle.ai) SDK for Android
 
 ![Platform](https://img.shields.io/badge/platform-ANDROID-orange.svg)
 ![Languages](https://img.shields.io/badge/language-JAVA-orange.svg)
 
 # Introduction
 This guide introduces a detailed integration guide of Team Circle Android SDK. 
-If you want to learn more about the social SDK functions, please visit [Team Circle iOS & Android SDK Introduction](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction)
+If you want to learn more about the social SDK functions, please visit [Team Circle iOS & Android SDK Introduction](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction)
 
 # System environmental requirements
 
@@ -17,26 +17,26 @@ Android, version 11 (Android SDK version 30) or above
 Team Circle offers a social SDK which is fully customizable and easy to integrate.
 
 * **Circle** 
-This is the core community function which Team Cricle SDK provides within your app. App users can make new posts, browse, comment, like, and collect other users’ posts. Please find more information about the introduction of Circle at [Circle in-app community](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Circle_in-app_community).
+This is the core community function which Team Cricle SDK provides within your app. App users can make new posts, browse, comment, like, and collect other users’ posts. Please find more information about the introduction of Circle at [Circle in-app community](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Circle_in-app_community).
 
 <img src="https://user-images.githubusercontent.com/114135053/192727471-e96837fe-8fa5-43dd-a30f-9bf82c07d392.png" width="50%">
 
 * **Store**
-If you subscribed to the Premium Plan, the built-in store function is enabled in your SDK. The store banner appears at the top of customer’s social feed page. Your customer can also tag store products when making a new prost. Please find out more info about the UI & UX of the store section here [Store](https://www.teamcircle.io/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store). You can [manage products and categories](https://www.teamcircle.io/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Manage_store) in the store via Admin Dashboard. If you already have an existing eCommerce section in your app and still wish to utilize Team Circle Customer Posts Bar to funnel UGC to your product listings, we also offer [a module that can be integrated into your own app pages outside the Circle](https://www.teamcircle.io/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store).
+If you subscribed to the Premium Plan, the built-in store function is enabled in your SDK. The store banner appears at the top of customer’s social feed page. Your customer can also tag store products when making a new prost. Please find out more info about the UI & UX of the store section here [Store](https://www.teamcircle.ai/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store). You can [manage products and categories](https://www.teamcircle.ai/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Manage_store) in the store via Admin Dashboard. If you already have an existing eCommerce section in your app and still wish to utilize Team Circle Customer Posts Bar to funnel UGC to your product listings, we also offer [a module that can be integrated into your own app pages outside the Circle](https://www.teamcircle.ai/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store).
 
 <img src="https://user-images.githubusercontent.com/114135053/192728188-dd3a80a1-7e8c-480f-a526-fb6f378ed664.png" width="50%">
 
-* **Instant messaging** Customers can chat with others individually using our IM system. We currently support sending text messages, voice messages, photos, videos. An admin can also [link the admin account with a Circle community account](https://www.teamcircle.io/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Link_unlink_accounts). After linking, an “official staff” badge will appear next to the Circle account. Please find more information about details of the IM system here [Instant Messaging](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Instant_messaging).
+* **Instant messaging** Customers can chat with others individually using our IM system. We currently support sending text messages, voice messages, photos, videos. An admin can also [link the admin account with a Circle community account](https://www.teamcircle.ai/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Link_unlink_accounts). After linking, an “official staff” badge will appear next to the Circle account. Please find more information about details of the IM system here [Instant Messaging](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Instant_messaging).
 
 <img src="https://user-images.githubusercontent.com/114135053/192732545-e686d10f-bd3c-4c70-a7eb-ab1b3f7475d0.png" width="50%">
 
-* **Customizable UI** Circle SDK offers customizable UI components so that you can fine tune the Circle to match the style of the rest of your app. First of all, you may switch between two different themes: Light Theme or Dark Theme. Then, all buttons, text, icons, and click effects can be customized. Please find more information about details of the Customizable UI here [Customizable UI](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Customizable_UI).
+* **Customizable UI** Circle SDK offers customizable UI components so that you can fine tune the Circle to match the style of the rest of your app. First of all, you may switch between two different themes: Light Theme or Dark Theme. Then, all buttons, text, icons, and click effects can be customized. Please find more information about details of the Customizable UI here [Customizable UI](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Customizable_UI).
 
 <img src="https://user-images.githubusercontent.com/114135053/192732951-bbefef0a-d617-46a9-81f5-24c171a3ef0d.png" width="50%">
 
 # Integration
 ## Get started
-* Sign up at https://www.TeamCircle.io.
+* Sign up at https://www.teamcircle.ai.
 * Login and find App ID and App Key in Admin Dashboard → SDK&DOC → App Info, you will need them in the following steps.
 
 ## Project configuration
@@ -518,7 +518,7 @@ Your customers can add product tags while creating new posts if you choose our P
 1. Add a whole Store module. A store section will appear at the top of the Circle social feed.
 2. Only integrate the Customer Post Bar into your own product detail page if you have existing ecommerce functions in your app.
 
-Both options require entering complete product info in the [Store](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Store) page in the Admin Dashboard.
+Both options require entering complete product info in the [Store](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Store) page in the Admin Dashboard.
 
 **Method:** StoreActivity
 
