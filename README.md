@@ -1,11 +1,11 @@
-# [TeamCircle](https://teamcircle.io) SDK for Android
+# [TeamCircle](https://teamcircle.ai) SDK for Android
 
 ![Platform](https://img.shields.io/badge/platform-ANDROID-orange.svg)
 ![Languages](https://img.shields.io/badge/language-JAVA-orange.svg)
 
 # Introduction
 This guide introduces a detailed integration guide of Team Circle Android SDK. 
-If you want to learn more about the social SDK functions, please visit [Team Circle iOS & Android SDK Introduction](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction)
+If you want to learn more about the social SDK functions, please visit [Team Circle iOS & Android SDK Introduction](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction)
 
 # System environmental requirements
 
@@ -17,26 +17,26 @@ Android, version 11 (Android SDK version 30) or above
 Team Circle offers a social SDK which is fully customizable and easy to integrate.
 
 * **Circle** 
-This is the core community function which Team Cricle SDK provides within your app. App users can make new posts, browse, comment, like, and collect other users’ posts. Please find more information about the introduction of Circle at [Circle in-app community](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Circle_in-app_community).
+This is the core community function which Team Cricle SDK provides within your app. App users can make new posts, browse, comment, like, and collect other users’ posts. Please find more information about the introduction of Circle at [Circle in-app community](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Circle_in-app_community).
 
 <img src="https://user-images.githubusercontent.com/114135053/192727471-e96837fe-8fa5-43dd-a30f-9bf82c07d392.png" width="50%">
 
 * **Store**
-If you subscribed to the Premium Plan, the built-in store function is enabled in your SDK. The store banner appears at the top of customer’s social feed page. Your customer can also tag store products when making a new prost. Please find out more info about the UI & UX of the store section here [Store](https://www.teamcircle.io/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store). You can [manage products and categories](https://www.teamcircle.io/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Manage_store) in the store via Admin Dashboard. If you already have an existing eCommerce section in your app and still wish to utilize Team Circle Customer Posts Bar to funnel UGC to your product listings, we also offer [a module that can be integrated into your own app pages outside the Circle](https://www.teamcircle.io/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store).
+If you subscribed to the Premium Plan, the built-in store function is enabled in your SDK. The store banner appears at the top of customer’s social feed page. Your customer can also tag store products when making a new prost. Please find out more info about the UI & UX of the store section here [Store](https://www.teamcircle.ai/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store). You can [manage products and categories](https://www.teamcircle.ai/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Manage_store) in the store via Admin Dashboard. If you already have an existing eCommerce section in your app and still wish to utilize Team Circle Customer Posts Bar to funnel UGC to your product listings, we also offer [a module that can be integrated into your own app pages outside the Circle](https://www.teamcircle.ai/document/Team_Circle_iOS_SDK_Integration_Guide?target=Store).
 
 <img src="https://user-images.githubusercontent.com/114135053/192728188-dd3a80a1-7e8c-480f-a526-fb6f378ed664.png" width="50%">
 
-* **Instant messaging** Customers can chat with others individually using our IM system. We currently support sending text messages, voice messages, photos, videos. An admin can also [link the admin account with a Circle community account](https://www.teamcircle.io/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Link_unlink_accounts). After linking, an “official staff” badge will appear next to the Circle account. Please find more information about details of the IM system here [Instant Messaging](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Instant_messaging).
+* **Instant messaging** Customers can chat with others individually using our IM system. We currently support sending text messages, voice messages, photos, videos. An admin can also [link the admin account with a Circle community account](https://www.teamcircle.ai/document/Team_Circle_Admin_Dashboard_Feature_Introduction?target=Link_unlink_accounts). After linking, an “official staff” badge will appear next to the Circle account. Please find more information about details of the IM system here [Instant Messaging](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Instant_messaging).
 
 <img src="https://user-images.githubusercontent.com/114135053/192732545-e686d10f-bd3c-4c70-a7eb-ab1b3f7475d0.png" width="50%">
 
-* **Customizable UI** Circle SDK offers customizable UI components so that you can fine tune the Circle to match the style of the rest of your app. First of all, you may switch between two different themes: Light Theme or Dark Theme. Then, all buttons, text, icons, and click effects can be customized. Please find more information about details of the Customizable UI here [Customizable UI](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Customizable_UI).
+* **Customizable UI** Circle SDK offers customizable UI components so that you can fine tune the Circle to match the style of the rest of your app. First of all, you may switch between two different themes: Light Theme or Dark Theme. Then, all buttons, text, icons, and click effects can be customized. Please find more information about details of the Customizable UI here [Customizable UI](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Customizable_UI).
 
 <img src="https://user-images.githubusercontent.com/114135053/192732951-bbefef0a-d617-46a9-81f5-24c171a3ef0d.png" width="50%">
 
 # Integration
 ## Get started
-* Sign up at https://www.TeamCircle.io.
+* Sign up at https://www.teamcircle.ai.
 * Login and find App ID and App Key in Admin Dashboard → SDK&DOC → App Info, you will need them in the following steps.
 
 ## Project configuration
@@ -176,6 +176,8 @@ TeamCircleSDK.getInstance().registerTeamCircleListener(new TeamCircleListener() 
   public void onShareJsonDownloaded(String shareJsonContent) {}
   @Override
   public void onDeleteAccount() {}
+  @Override
+  public void teamCircleTapProduct(String productCode) {}
 });
 ```
 Error Codes:
@@ -241,6 +243,32 @@ public void userLogout();
 TeamCircleSDK.getInstance().userLogout();
 ```
 
+**Method:** deleteAccount
+
+**Description:** Description: Use this method to clear all personal data of the user in the server.
+
+**Parameters:**
+
+```bash
+public void deleteAccount(OperatorResultCallback callback);
+```
+**Sample Code:**
+
+```bash
+TeamCircleSDK.getInstance().deleteAccount(new OperatorResultCallback() 
+{
+    @Override
+    public void onSuccess() {
+        
+    }
+
+    @Override
+    public void onFail(String error) {
+
+    }
+});
+```
+
 ## Actions and notifications
 There are several types of actions including like, comment, reply, favorite, followed by other users, and posts get featured by admin. All these actions can be sent to customers as push notifications, and you only need to set ‘Push Notification Callback’ in the Admin Dashboard → SDK&DOC → APP Info. After receiving push notifications in the app, the following methods can be used to redirect to Circle Notification Module:
 
@@ -249,12 +277,12 @@ There are several types of actions including like, comment, reply, favorite, fol
 **Parameters:**
 
 ```bash
-public void jumpToNotificationCenter(Context context, String message);
+public void jumpToNotificationCenter();
 ```
 **Sample Code:**
 
 ```bash
-TeamCircleSDK.getInstance().jumpToNotificationCenter(context, "xxx started following you.");
+TeamCircleSDK.getInstance().jumpToNotificationCenter();
 ```
 There are two types of messages received by the server, Circle messages and IM offline messages. The specific parameters are as follows:
 | **Param** | **Type** | **Description** |
@@ -409,7 +437,7 @@ TeamCircleSDK.getInstance().sendPost(newPostDetail, new SendPostCallBack() {
 });
 ```
 
-## Share Json
+## Post Attachment
 Sometimes an app might have its own unique content that it wishes users can share along with the post. These contents are usually related with the core function of the app. Here are a few examples
 
 * An IoT cookware app can enable users to share their recipe program while posting gourmet photos.
@@ -437,6 +465,22 @@ By default, the json file contains the following keys:
 
 ```bash
 TeamCircleSDK.getInstance().getShareJsonSetting().setShareJsonActivity("com.xxxx.xxxx.xxxxActivity", "android.intent.category.DEFAULT");
+```
+
+**Method:** setShareJson
+
+**Description:** Set share json. If you select a Json in the ShareJsonActivity page, you need to call it when you return to the page.
+
+**Sample Code:**
+
+```bash
+ShareJson shareJson = new ShareJson();
+shareJson.setAppId("com.xxxx.xxxx");
+shareJson.setAppLogo(R.drawable.icon);
+shareJson.setName(wavePatternHolder.name);
+shareJson.setContent(wavePatternHolder.toJson());
+shareJson.setThumbnail(thumbnailSavePathMap.get(selectedIndex));
+TeamCircleSDK.getInstance().getShareJsonSetting().setShareJson(shareJson);
 ```
 
 **Method:** setShareJsonIcons
@@ -474,7 +518,7 @@ Your customers can add product tags while creating new posts if you choose our P
 1. Add a whole Store module. A store section will appear at the top of the Circle social feed.
 2. Only integrate the Customer Post Bar into your own product detail page if you have existing ecommerce functions in your app.
 
-Both options require entering complete product info in the [Store](https://www.teamcircle.io/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Store) page in the Admin Dashboard.
+Both options require entering complete product info in the [Store](https://www.teamcircle.ai/document/Team_Circle_iOS_Android_Social_SDK_Introduction?target=Store) page in the Admin Dashboard.
 
 **Method:** StoreActivity
 
@@ -587,18 +631,76 @@ TeamCircleSDK.getInstance().getUiSetting().setProductDescColor(typeface,context.
 * **Method:** setIconBack <br> **Description:** Set icon for all back buttons.
 <img src="https://user-images.githubusercontent.com/114135053/193207889-fac83ce6-6499-4fd9-adf4-1b4e8c5fc1b4.png" width="40%">
 
+* **Method:** setIconEnableSendComment <br> **Description:** Set icon for enable to sending a comments.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/77a48f4a-2846-4c33-ad3f-28eeb888d352" width="40%">
+
+* **Method:** setIconDisableSendComment <br> **Description:** Set icon for disable to sending a comments.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/69c92f06-f607-4591-8334-16af2991797d" width="40%">
+
+* **Method:** setIconEnableSendGif <br> **Description:** Set icon for enable to sending a GIF.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/0963274c-6fb0-4f62-b2a7-24a69435aeb3" width="40%">
+
+* **Method:** setIconDisableSendGif <br> **Description:** Set icon for disable to sending a GIF.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/74aa020d-ff4b-4da0-9130-7c0d2d1313e1" width="40%">
+
+* **Method:** setIconEnableSendPhoto <br> **Description:** Set icon for enable to sending photos.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/b2df3983-969d-4c6a-83c4-1493103f2abf" width="40%">
+
+* **Method:** setIconDisableSendPhoto <br> **Description:** Set icon for disable to sending photos.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/2b0cd44f-1609-4f18-9060-7e7e8505b7fb" width="40%">
+
+* **Method:** setIconMoreOperation <br> **Description:** Set the more operation icon in the upper right corner of the post.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/207fddbc-3d3f-4bd7-ba1c-419b257348a4" width="40%">
+
+* **Method:** setIconStore <br> **Description:** Set the icon of the store entrance.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/9120307a-9f89-43d9-ade4-1d8352cf0216" width="40%">
+
+* **Method:** setIconProfile <br> **Description:** Set the icon of profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/2f373b16-7786-4a50-b0c0-94b35226a6ce" width="40%">
+
+* **Method:** setIconChat <br> **Description:** Set the icon of chat.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/9935826d-993b-4044-ab1f-161c047da353" width="40%">
+
+* **Method:** setIconProfileMyPost <br> **Description:** Set the icon of my post in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/09911c2c-4296-4d38-a4ee-5c63f0f349a0" width="40%">
+
+* **Method:** setIconProfileMyPostSelected <br> **Description:** Set the icon of my post seleted in Profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/858d7621-357b-486a-b16b-d3d24892bdc6" width="40%">
+
+* **Method:** setIconProfileFavorite <br> **Description:** Set the icon of my favorite in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/8ec2a9d7-ff07-4056-87a1-43b461662aa4" width="40%">
+
+* **Method:** setIconProfileFavoriteSelected <br> **Description:** Set the icon of my favorite seleted in profile.
+<img src="https://github.com/TeamCircleSDK/teamcircle-android-sdk/assets/114135053/ef0b2a6d-38cb-45ba-8bc7-8b892ce518db" width="40%">
+
+
+
 Sample Code:
 ```bash
-TeamCircleSDK.getInstance().getUiSetting().setIconFavorite(R.drawable.favorite);
-TeamCircleSDK.getInstance().getUiSetting().setIconFavoriteSelected(R.drawable.favorite_selected);
-TeamCircleSDK.getInstance().getUiSetting().setIconTag(R.drawable.tag);
-TeamCircleSDK.getInstance().getUiSetting().setIconTagSelected(R.drawable.tag_select);
+TeamCircleSDK.getInstance().getUiSetting().setIconBack(R.drawable.back);
 TeamCircleSDK.getInstance().getUiSetting().setIconLike(R.drawable.like);
 TeamCircleSDK.getInstance().getUiSetting().setIconLikeSelected(R.drawable.like_selected);
-TeamCircleSDK.getInstance().getUiSetting().setIconShare(R.drawable.share);
+TeamCircleSDK.getInstance().getUiSetting().setIconFavorite(R.drawable.favorite);
+TeamCircleSDK.getInstance().getUiSetting().setIconFavoriteSelected(R.drawable.favorite_selected);
 TeamCircleSDK.getInstance().getUiSetting().setIconComment(R.drawable.comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconShare(R.drawable.share);
 TeamCircleSDK.getInstance().getUiSetting().setIconNewPost(R.drawable.newpost);
-TeamCircleSDK.getInstance().getUiSetting().setIconBack(R.drawable.back);
+TeamCircleSDK.getInstance().getUiSetting().setIconTag(R.drawable.tag);
+TeamCircleSDK.getInstance().getUiSetting().setIconTagSelected(R.drawable.tag_select);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendComment(R.drawable.enable_send_comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendComment(R.drawable.disable_send_comment);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendGif(R.drawable.enable_send_gif);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendGif(R.drawable.disable_send_gif);
+TeamCircleSDK.getInstance().getUiSetting().setIconEnableSendPhoto(R.drawable.enable_send_photo);
+TeamCircleSDK.getInstance().getUiSetting().setIconDisableSendPhoto(R.drawable.disable_send_photo);
+TeamCircleSDK.getInstance().getUiSetting().setIconMoreOperation(R.drawable.more_operation);
+TeamCircleSDK.getInstance().getUiSetting().setIconStore(R.drawable.store);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfile(R.drawable.profile);
+TeamCircleSDK.getInstance().getUiSetting().setIconChat(R.drawable.chat);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileMyPost(R.drawable.profile_my_post);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileMyPostSelected(R.drawable.profile_my_post_selected);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileFavorite(R.drawable.profile_favorite);
+TeamCircleSDK.getInstance().getUiSetting().setIconProfileFavoriteSelected(R.drawable.profile_favorite_selected);
 ```
 ## Colors
 
