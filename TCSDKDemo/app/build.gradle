@@ -76,4 +76,7 @@ dependencies {
 
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:chromecast-sender:0.26'
 
+    implementation 'cn.jzvd:jiaozivideoplayer:7.7.0'
+
+    implementation("io.alterac.blurkit:blurkit:1.1.1")
 }
